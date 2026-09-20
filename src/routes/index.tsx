@@ -377,6 +377,45 @@ function DropX() {
             )}
           </div>
         </Card>
+        <div className="sm:col-span-2">
+          <Card title="Connect your PC" subtitle="One-time setup, about 5 minutes.">
+            <ol className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <span className="font-medium text-foreground">1.</span> Install{" "}
+                <a
+                  href="https://tailscale.com/download"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-dotted"
+                >
+                  Tailscale
+                </a>{" "}
+                (free) on your PC and phone — sign in with the same account.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">2.</span> Download the agent below and run{" "}
+                <code className="rounded bg-background/60 px-1.5 py-0.5 font-mono text-xs">python agent.py</code>{" "}
+                on your PC (get Python at python.org, tick “Add to PATH”).
+              </li>
+              <li>
+                <span className="font-medium text-foreground">3.</span> On the PC run{" "}
+                <code className="rounded bg-background/60 px-1.5 py-0.5 font-mono text-xs">tailscale serve --bg 8765</code>{" "}
+                and copy the <span className="font-mono text-xs">https://…ts.net</span> address it prints.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">4.</span> Tap ⚙︎ at the top, paste that address and save —
+                the dot in the header should turn green.
+              </li>
+            </ol>
+            <a
+              className="btn-base btn-primary inline-flex w-fit items-center gap-2"
+              href="/agent.py"
+              download="agent.py"
+            >
+              ⬇ Download agent.py
+            </a>
+          </Card>
+        </div>
       </main>
 
       <p className="mx-auto max-w-3xl px-4 pb-8 text-center text-[11px] text-muted-foreground">
