@@ -15,10 +15,10 @@ async function request(path: string, init?: RequestInit): Promise<ApiResult> {
   const base = getApiBase();
   if (!base) return { ok: false, error: "No PC API URL saved" };
   try {
-    const res = await fetch(`${base}${path}`, {
-      ...init,
-      headers: init?.body ? { "Content-Type": "application/json" } : undefined,
-    });
+    const headers: Record<string, string> = init?.body
+      ? { "Content-Type": "application/json" }
+      : {};
+    const res = await fetch(`${base}${path}`, { ...init, headers });
     let data: unknown = null;
     try {
       data = await res.json();
