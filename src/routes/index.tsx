@@ -160,20 +160,21 @@ function DropX() {
           : scaffold[1]?.includes("web")
             ? "web"
             : "python-cli";
-        const target = scaffold[2].trim();
+        const target = (scaffold[2] ?? "").trim();
         speak(`Scaffolding ${k} at ${target}`);
         run(`scaffold ${k} → ${target}`, () => api.scaffold(k, target));
         return;
       }
       const call = t.match(/call\s+me\s+(.+)$/);
       if (call) {
+        const message = (call[1] ?? "").trim();
         speak("Calling you now.");
-        run(`call: ${call[1]}`, () => api.call(call[1].trim()));
+        run(`call: ${message}`, () => api.call(message));
         return;
       }
       const open = t.match(/open\s+(.+)$/);
       if (open) {
-        const target = open[1].trim();
+        const target = (open[1] ?? "").trim();
         speak(`Opening ${target}`);
         run(`open ${target}`, () => api.open(target, target));
         return;
